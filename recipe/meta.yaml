@@ -15,8 +15,8 @@ source:
   sha256: feeda85700464cdc544beb533c440079327cb5e3d225b0a18d0a207091db60ee
 
 build:
-  number: 1
-  skip: true  # [win32]
+  noarch: generic
+  number: 1001
   rpaths:
     - lib/R/lib/
     - lib/
@@ -45,8 +45,7 @@ about:
     results. Correction methods include polynomial fitting, weighted local smoothers
     and many more.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'  # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-2'  # [win]
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
