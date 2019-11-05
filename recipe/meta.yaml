@@ -1,5 +1,4 @@
-{% set version = "1.2-2" %}
-
+{% set version = '1.2-2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,31 +7,32 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: baseline_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/baseline_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/baseline/baseline_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/baseline_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/baseline/baseline_{{ version }}.tar.gz
   sha256: 1b94fdf71367de407e5c395eb1ef442350d168c7f3937e3e808689bfed0f9510
 
 build:
-  noarch: generic
+  merge_build_host: True  # [win]
   number: 0
+  noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-sparsem
-
   run:
     - r-base
     - r-sparsem
 
 test:
   commands:
-    - $R -e "library('baseline')"  # [not win]
+    - $R -e "library('baseline')"           # [not win]
     - "\"%R%\" -e \"library('baseline')\""  # [win]
 
 about:
@@ -45,14 +45,31 @@ about:
     results. Correction methods include polynomial fitting, weighted local smoothers
     and many more.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - dpryan79
-    - cbrueffer
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+
+# Encoding: UTF-8
+# Package: baseline
+# Type: Package
+# Title: Baseline Correction of Spectra
+# Version: 1.2-2
+# Date: 2019-11-05
+# Authors@R: c(person("Kristian Hovde", "Liland", role = c("aut","cre"), email="kristian.liland@nmbu.no"), person("Bjrn-Helge", "Mevik", role=c("aut")), person("Roberto", "Canteri", role=c("ctb")))
+# Maintainer: Kristian Hovde Liland <kristian.liland@nmbu.no>
+# Description: Collection of baseline correction algorithms, along with a framework and a GUI for optimising baseline algorithm parameters. Typical use of the package is for removing background effects from spectra originating from various types of spectroscopy and spectrometry, possibly optimizing this with regard to regression or classification results. Correction methods include polynomial fitting, weighted local smoothers and many more.
+# License: GPL-2
+# Depends: R (>= 2.15)
+# Imports: graphics, SparseM, grDevices, stats, methods
+# Suggests: gWidgets, IDPmisc, lattice, pls, MASS
+# LazyLoad: true
+# LazyData: true
+# ZipData: true
+# NeedsCompilation: no
+# Packaged: 2019-11-05 14:03:37 UTC; kristl
+# Author: Kristian Hovde Liland [aut, cre], Bjrn-Helge Mevik [aut], Roberto Canteri [ctb]
+# Repository: CRAN
+# Date/Publication: 2019-11-05 17:10:02 UTC
