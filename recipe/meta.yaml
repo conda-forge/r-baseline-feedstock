@@ -1,4 +1,4 @@
-{% set version = '1.2-1' %}
+{% set version = "1.2-2" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,11 +12,11 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/baseline_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/baseline/baseline_{{ version }}.tar.gz
-  sha256: feeda85700464cdc544beb533c440079327cb5e3d225b0a18d0a207091db60ee
+  sha256: 1b94fdf71367de407e5c395eb1ef442350d168c7f3937e3e808689bfed0f9510
 
 build:
   noarch: generic
-  number: 1002
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
