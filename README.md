@@ -1,11 +1,11 @@
-About r-baseline
-================
+About r-baseline-feedstock
+==========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-baseline-feedstock/blob/main/LICENSE.txt)
 
 Home: https://CRAN.R-project.org/package=baseline
 
 Package license: GPL-2
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-baseline-feedstock/blob/main/LICENSE.txt)
 
 Summary: Collection of baseline correction algorithms, along with a framework and a GUI for optimising baseline algorithm parameters. Typical use of the package is for removing background effects from spectra originating from various types of spectroscopy and spectrometry, possibly optimizing this with regard to regression or classification results. Correction methods include polynomial fitting, weighted local smoothers and many more.
 
